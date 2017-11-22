@@ -14,7 +14,7 @@ export default StripeElement.extend({
   canMakePayment: false,
 
   notSupported: computed('isLoading', 'canMakePayment', function() {
-    return !get(this, 'isLoading') && !get('canMakePayment');
+    return !get(this, 'isLoading') && !get(this, 'canMakePayment');
   }),
 
   didInsertElement() {
