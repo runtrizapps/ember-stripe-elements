@@ -1,4 +1,8 @@
 <div role="mount-point"></div>
 {{#if hasBlock}}
-  {{yield paymentRequest notSupported}}
+  {{yield (hash
+    paymentRequest=paymentRequest
+    notSupported=notSupported
+    isLoading=isLoading
+  )}}
 {{/if}}
