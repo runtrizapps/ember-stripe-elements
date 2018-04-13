@@ -38,15 +38,19 @@ export default StripeElement.extend({
   },
 
   checkForPayment() {
-    get(this, 'paymentRequest').canMakePayment()
+    return get(this, 'paymentRequest').canMakePayment()
       .then((canMakePayment) => {
+        if (this.get('isDestroyed')) {
+          return;
+        }
+
         set(this, 'isLoading', false);
         set(this, 'canMakePayment', !!canMakePayment);
         if (canMakePayment) {
           this.setEventListeners();
           this.mount();
         }
-      })
+      });
   },
 
   setEventListeners() {
